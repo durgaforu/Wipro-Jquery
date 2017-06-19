@@ -25,11 +25,11 @@
 
 //console.log(add(12,13));
 
- //function add(n1, n2) {
-  //   return n1 + n2;
- //}
+//function add(n1, n2) {
+//   return n1 + n2;
+//}
 
- //console.log(add(12,13));
+//console.log(add(12,13));
 
 //-------------------------------------------------------
 
@@ -37,8 +37,8 @@
 
 //console.log(add(12, 13));
 
- //var add = function(n1, n2) {
- // return n1 + n2;
+//var add = function(n1, n2) {
+// return n1 + n2;
 // }
 
 //console.log(add(12, 12));
@@ -48,9 +48,9 @@
 
 // 1. Functions as values
 
- function sayHello() {
-     console.log('Hello There..');
- }
+function sayHello() {
+    console.log('Hello There..');
+}
 
 //sayHello();
 
@@ -76,10 +76,10 @@ greet(function () { console.log('Ola....') });
 
 // // e.g
 
-// var arr = [1, 3, 5, 7, 9, 2, 4, 6, 8, 10];
-// // arr.sort();
-// arr.sort(function (a, b) { return b - a; });
-// console.log(arr);
+var arr = [1, 3, 5, 7, 9, 2, 4, 6, 8, 10];
+arr.sort();
+arr.sort(function (a, b) { return a - b; });
+//console.log(arr);
 
 
 //-------------------------------------------------------
@@ -88,25 +88,37 @@ greet(function () { console.log('Ola....') });
 
 function teach() {
     console.log('teaching...');
+   
     function learn() {
         console.log('learn...');
     }
-    return learn;
+
+    function homework() {
+        console.log('Do Home Work');
+
+    }
+
+    return homework;
 }
 
-// var learnFunc = teach();
-// learnFunc();
-// learnFunc();
+var learnFunc = teach();
+//learnFunc();
+
+//learnFunc();
+//learnFunc();
+
+
 
 //-------------------------------------------------------
 
 
 function giveBack(a,b,c) {
     console.dir(arguments);
-    return arguments[0];
+    return arguments[2];
 }
 
-// console.log(giveBack(12,13,14,15,16));
+ console.log(giveBack(1));
+
 
 function sum() {
     var i = 0,
@@ -137,30 +149,46 @@ function abc(a) {
 
 // No block scope till ES-5
 
-// function f() {
-    
-//     {
-//         var i = 100;    
-//     }
+ function f() {
 
-//     console.log(i);
+     {
+         let i = 1000;    
+     }
 
-// }
+     console.log("I value is "+i);
 
-// f();
+ }
+
+ f();
 
 
 //-------------------------------------------------------
 
 
-// function f() {
-//     k = 100;
-// }
-// f();
+ //function f() {
+ //    k = 100;
+ //}
+ 
+ //f();
 
-// console.log(k);
+ //console.log(k);
 
 
+  function outer(){  // global
+
+         var x=100;
+        function inner(){
+            x=400;
+            console.log('x: '+x);
+          
+        }
+        console.log('X Value is: '+x);
+        return inner;
+
+  }
+
+  var obj=outer();
+  obj();
 
 
 

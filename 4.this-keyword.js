@@ -15,20 +15,34 @@
 
 // whey we need 'this' keyword?
 
-// var person = {
-//     pName: 'Nag',
-//     sayName: function () {
-//         //console.log('im ' + pName)
-//         //console.log('im ' + person.pName);
-//         console.log('im ' + this.pName);
-//     }
-// };
+var person = {
+    pName: 'Nag',
+    sayName: function () {
+        // console.log('im 1 ' + pName);
+        console.log('im 2 ' + person.pName);
 
-// // person.sayName();
+    }
+};
 
-// var p = person;
-// person = { pName: 'Ria' };
-// p.sayName();
+var emp = {
+    name: 'Praveen Reddy S',
+    loc: 'Hyd',
+    salary: 9876,
+
+    getSalary: function (x) {
+        var sal = emp.salary + x;
+        console.log('Salary: ' + sal);
+        console.log("Employee Name: " + this.name);
+    },
+    desig: 'Engineer'
+};
+//emp.getSalary(2000);
+
+var p = person;
+//p.sayName(); // before modifecations
+person = { pName: 'Ria' };
+//p.sayName();
+
 
 //-------------------------------------------------------------
 
@@ -61,11 +75,11 @@ function Person(name, age) {
     this.sayAge = function () {
         console.log('im ' + this.age + " old");
     }
-    
+
 }
 
-var p1 = new Person('Nag', 32); // constructor-invoccation  ( context owned by new-obj)
-var p2 = new Person('Ria', 2);
+//var p1 = new Person('Nag', 32); // constructor-invoccation  ( context owned by new-obj)
+//var p2 = new Person('Ria', 2);
 //...
 
 // imp-note : always constructors return 'this'
@@ -75,34 +89,35 @@ var p2 = new Person('Ria', 2);
 
 // third-party
 var greetLib = {
-    sayName: function (message,from) {
-        console.log(message+' im '+this.name+ ":"+from);
-    }
+    sayName: function (message, from) {
+        console.log(message + ' im ' + this.name + ": " + from+' '+this.age+' Years Old');
+       
+}
 };
 
 // our-code
-var p1 = { name: 'Nag' };
-var e1 = { name: 'Emp1' };
+var p1 = { name: 'Nag', age: 87 };
+var e1 = { name: 'Emp1',age: 77};
 
-// greetLib.sayName();
+//greetLib.sayName('Hello','Praveen');
 
 // dyanamic func binding
 
 // way-1
-// greetLib.sayName.call(p1,"Hello","BLR")
-// greetLib.sayName.call(e1, "Dude", "CHN")
+//greetLib.sayName.call(p1, "Hello", "BLR")
+//greetLib.sayName.call(e1, "Dude", "CHN")
 
 // way-2
 // greetLib.sayName.apply(p1,["Hello","BLR"])
-// greetLib.sayName.apply(e1,["Dude","CHN"])
+//greetLib.sayName.apply(e1,["Dude","CHN"])
 
 //way-3
-// var newF = greetLib.sayName.bind(p1);
+ var newF = greetLib.sayName.bind(p1);
 // // click-event
-// newF("Hi", "universe");
+newF("Hi", "universe");
 
-// var newF2 = greetLib.sayName.bind(e1, "Dude", "CHN");
-// newF2();
+ var newF2 = greetLib.sayName.bind(e1, "Dude", "CHN");
+newF2();
 
 //----------------------------------------------------------------------------
 
